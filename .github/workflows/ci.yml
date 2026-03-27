@@ -10,15 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Verify index.html exists
+    - uses: actions/checkout@v4
+    - name: Verify files
       run: |
+        ls -R
         if [ ! -f index.html ]; then
           echo "Error: index.html not found!"
           exit 1
         fi
-    - name: Archive build artifacts
-      uses: actions/upload-artifact@v3
+    - name: Upload website
+      uses: actions/upload-artifact@v4
       with:
-        name: website-files
+        name: website-artifact
         path: .
